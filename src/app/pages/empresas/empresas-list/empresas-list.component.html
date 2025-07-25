@@ -1,0 +1,34 @@
+<div class="container mt-4">
+  <h2>Empresas</h2>
+  <a class="btn btn-primary mb-3" routerLink="/empresas/novo">Nova Empresa</a>
+
+  <div *ngIf="erro" class="alert alert-danger mt-3">
+    {{ mensagem }}
+  </div>
+
+  <div *ngIf="sucesso" class="alert alert-success mt-3">
+    {{ mensagem }}
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let empresa of empresas">
+            <td>{{ empresa.id }}</td>
+            <td>{{ empresa.nome }}</td>
+            <td>{{ empresa.email }}</td>
+            <td>
+                <a [routerLink]="['/empresas/editar', empresa.id]" class="btn btn-sm btn-warning">Editar</a>
+                <button (click)="deletar(empresa.id)" class="btn btn-sm btn-danger ms-2">Excluir</button>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,91 @@
+<div class="container mt-4">
+  <h2>{{ modoEdicao ? 'Editar Vaga' : 'Nova Vaga' }}</h2>
+
+  <form (ngSubmit)="enviarForm()" #form="ngForm">
+
+    <div *ngIf="erro" class="alert alert-danger mt-3">
+      {{ mensagem }}
+    </div>
+
+    <div *ngIf="sucesso" class="alert alert-success mt-3">
+      {{ mensagem }}
+    </div>
+
+    <!-- Título -->
+    <div class="mb-3">
+      <label for="titulo" class="form-label">Título</label>
+      <input type="text" id="titulo" [(ngModel)]="vaga.titulo" name="titulo" class="form-control" required="required" />
+      <div *ngIf="errosValidacao.titulo" class="text-danger">
+        {{ errosValidacao.titulo }}
+      </div>
+    </div>
+
+    <!-- Descrição -->
+    <div class="mb-3">
+      <label for="descricao" class="form-label">Descrição</label>
+      <textarea id="descricao" [(ngModel)]="vaga.descricao" name="descricao" class="form-control" rows="3"></textarea>
+      <div *ngIf="errosValidacao.descricao" class="text-danger">
+        {{ errosValidacao.descricao }}
+      </div>
+    </div>
+
+    <!-- Localização -->
+    <div class="mb-3">
+      <label for="localizacao" class="form-label">Localização</label>
+      <input type="text" id="localizacao" [(ngModel)]="vaga.localizacao" name="localizacao" class="form-control" />
+      <div *ngIf="errosValidacao.localizacao" class="text-danger">
+        {{ errosValidacao.localizacao }}
+      </div>
+    </div>
+
+    <!-- Modalidade -->
+    <div class="mb-3">
+      <label for="modalidade" class="form-label">Modalidade</label>
+      <select id="modalidade" [(ngModel)]="vaga.modalidade" name="modalidade" class="form-select">
+        <option [value]="'PRESENCIAL'">Presencial</option>
+        <option [value]="'REMOTO'">Remoto</option>
+        <option [value]="'HIBRIDO'">Híbrido</option>
+      </select>
+      <div *ngIf="errosValidacao.modalidade" class="text-danger">
+        {{ errosValidacao.modalidade }}
+      </div>
+    </div>
+
+    <!-- Carga Horária -->
+    <div class="mb-3">
+      <label for="cargaHoraria" class="form-label">Carga Horária</label>
+      <input type="text" id="cargaHoraria" [(ngModel)]="vaga.cargaHoraria" name="cargaHoraria" class="form-control" />
+      <div *ngIf="errosValidacao.cargaHoraria" class="text-danger">
+        {{ errosValidacao.cargaHoraria }}
+      </div>
+    </div>
+
+    <!-- Requisitos -->
+    <div class="mb-3">
+      <label for="requisitos" class="form-label">Requisitos</label>
+      <textarea id="requisitos" [(ngModel)]="vaga.requisitos" name="requisitos" class="form-control" rows="3"></textarea>
+      <div *ngIf="errosValidacao.requisitos" class="text-danger">
+        {{ errosValidacao.requisitos }}
+      </div>
+    </div>
+
+    <!-- Área -->
+    <div class="mb-3">
+      <label for="areaId" class="form-label">Área</label>
+      <select id="areaId" [(ngModel)]="vaga.areaId" name="areaId" class="form-select">
+        <option value="">Selecione uma área</option>
+        <option *ngFor="let area of areasDisponiveis" [value]="area.id">{{ area.nome }}</option>
+      </select>
+      <div *ngIf="errosValidacao.areaId" class="text-danger">
+        {{ errosValidacao.areaId }}
+      </div>
+    </div>
+
+    <!-- Botões -->
+    <div class="d-flex justify-content-end gap-2">
+      <button type="button" class="btn btn-secondary" (click)="voltar()">Voltar</button>
+      <button type="submit" class="btn btn-success">Salvar</button>
+    </div>
+
+  </form>
+</div>

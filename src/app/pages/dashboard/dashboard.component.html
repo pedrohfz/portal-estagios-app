@@ -1,0 +1,36 @@
+<div class="dashboard-container">
+  <h1>Dashboard Administrativo</h1>
+
+  <div *ngIf="errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <div *ngIf="dashboardData" class="dashboard-content">
+    <section class="stats-cards">
+      <div class="card">
+        <h3>Empresas Cadastradas</h3>
+        <p>{{ dashboardData.stats.totalEmpresas }}</p>
+      </div>
+      <div class="card">
+        <h3>Estudantes Cadastrados</h3>
+        <p>{{ dashboardData.stats.totalEstudantes }}</p>
+      </div>
+      <div class="card open-vacancies">
+        <h3>Vagas Abertas</h3>
+        <p>{{ dashboardData.stats.totalVagasAbertas }}</p>
+      </div>
+      <div class="card closed-vacancies">
+        <h3>Vagas Encerradas</h3>
+        <p>{{ dashboardData.stats.totalVagasEncerradas }}</p>
+      </div>
+    </section>
+
+    <section class="chart-section">
+      <h2>Gráfico de Vagas por Área</h2>
+      <div class="chart-container">
+        <canvas #vagasChartCanvas id="vagasChart"></canvas>
+      </div>
+    </section>
+  </div>
+
+</div>

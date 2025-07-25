@@ -1,0 +1,40 @@
+<div class="container mt-5" style="max-width: 400px;">
+  <h3 class="mb-4 text-center">Realizar Login</h3>
+
+  <form (ngSubmit)="fazerLogin()">
+    <div class="mb-3">
+      <label for="email" class="form-label">E-mail</label>
+      <input type="email" id="email" [(ngModel)]="email" name="email" class="form-control" required />
+      <div *ngIf="errosValidacao.email" class="text-danger">
+        {{ errosValidacao.email }}
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="senha" class="form-label">Senha</label>
+      <input type="password" id="senha" [(ngModel)]="senha" name="senha" class="form-control" required />
+      <div *ngIf="errosValidacao.senha" class="text-danger">
+        {{ errosValidacao.senha }}
+      </div>
+    </div>
+
+    <div class="d-grid">
+      <button type="submit" class="btn btn-primary">Entrar</button>
+    </div>
+
+    <div class="text-center mt-3">
+      <span>Você é estudante e não tem uma conta?</span>
+      <button type="button" class="btn btn-link p-0 ms-1" (click)="cadastrarEstudante()">Cadastre-se</button>
+    </div>
+
+    <div class="text-center mt-3">
+      <span>Você é empresa e não tem uma conta?</span>
+      <button type="button" class="btn btn-link p-0 ms-1" (click)="cadastrarEmpresa()">Cadastre-se</button>
+    </div>
+
+    <div *ngIf="erroLogin" class="alert alert-danger mt-3">
+      {{ mensagemLogin }}
+    </div>
+    
+  </form>
+</div>

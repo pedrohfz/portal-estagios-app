@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <h2>Dados da Vaga</h2>
+
+  <div class="mb-3">
+    <label for="titulo" class="form-label">Vaga</label>
+    <input type="text" [(ngModel)]="tituloVaga" name="titulo" class="form-control" readonly>
+  </div>
+
+  <div class="mb-3">
+    <label for="empresaNome" class="form-label">Empresa</label>
+    <input type="text" [(ngModel)]="empresaNome" name="empresaNome" class="form-control" readonly>
+  </div>
+
+  <hr>
+
+  <h2>Avaliações da Empresa</h2>
+
+  <div *ngIf="avaliacoes.length === 0" class="alert alert-info" role="alert">
+    Não há avaliações para esta empresa ainda.
+  </div>
+
+  <div *ngIf="avaliacoes.length > 0" class="list-group">
+    <div *ngFor="let avaliacao of avaliacoes" class="list-group-item mb-3">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Nota: {{ avaliacao.nota }} / 5</h5>
+        <small class="text-muted">{{ avaliacao.dataAvaliacao | date:'dd/MM/yyyy HH:mm' }}</small>
+      </div>
+      <p class="mb-1">{{ avaliacao.comentario }}</p>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-end gap-2 mt-4">
+    <button type="button" class="btn btn-secondary" (click)="voltar()">Voltar</button>
+  </div>
+
+</div>

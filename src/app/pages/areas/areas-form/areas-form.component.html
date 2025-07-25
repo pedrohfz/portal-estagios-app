@@ -1,0 +1,29 @@
+<div class="container mt-4">
+  <h2>{{ modoEdicao ? 'Editar Área de Interesse' : 'Nova Área de Interesse' }}</h2>
+
+  <form (ngSubmit)="enviarForm()" #form="ngForm">
+
+    <div *ngIf="erro" class="alert alert-danger mt-3">
+      {{ mensagem }}
+    </div>
+
+    <div *ngIf="sucesso" class="alert alert-success mt-3">
+      {{ mensagem }}
+    </div>
+
+    <!-- Nome -->
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome</label>
+      <input type="text" id="nome" [(ngModel)]="areas.nome" name="nome" class="form-control"/>
+      <div *ngIf="errosValidacao.nome" class="text-danger">
+        {{ errosValidacao.nome }}
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-end gap-2">
+      <button type="button" class="btn btn-secondary" (click)="voltar()">Voltar</button>
+      <button type="submit" class="btn btn-success">Salvar</button>
+    </div>
+
+  </form>
+</div>

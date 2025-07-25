@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <h2>Áreas de Interesse</h2>
+  <a class="btn btn-primary mb-3" routerLink="/areas/novo">Nova Área de Interesse</a>
+
+  <div *ngIf="erro" class="alert alert-danger mt-3">
+    {{ mensagem }}
+  </div>
+
+  <div *ngIf="sucesso" class="alert alert-success mt-3">
+    {{ mensagem }}
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let area of areas">
+            <td>{{ area.id }}</td>
+            <td>{{ area.nome }}</td>
+            <td>
+                <a [routerLink]="['/areas/editar', area.id]" class="btn btn-sm btn-warning">Editar</a>
+                <button (click)="deletar(area.id)" class="btn btn-sm btn-danger ms-2">Excluir</button>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+</div>

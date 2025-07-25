@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+  <div class="container-fluid">
+    
+    <a class="navbar-brand" href="#">Portal de Estágios</a>
+
+    <div class="collapse navbar-collapse justify-content-between">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item" *ngIf="perfil === 'ADMIN'">
+          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+        </li>
+
+        <li class="nav-item" *ngIf="perfil === 'ADMIN'">
+          <a class="nav-link" routerLink="/usuarios" routerLinkActive="active">Usuários</a>
+        </li>
+
+        <li class="nav-item" *ngIf="perfil === 'ADMIN'">
+          <a class="nav-link" routerLink="/areas" routerLinkActive="active">Áreas de Interesse</a>
+        </li>
+
+        <li class="nav-item" *ngIf="perfil === 'ADMIN'">
+          <a class="nav-link" routerLink="/empresas" routerLinkActive="active">Empresas</a>
+        </li>
+
+        <li class="nav-item" *ngIf="perfil === 'ADMIN'">
+          <a class="nav-link" routerLink="/estudantes" routerLinkActive="active">Estudantes</a>
+        </li>
+
+        <li class="nav-item" *ngIf="perfil === 'EMPRESA'">
+          <a class="nav-link" routerLink="/empresas/estudantes/inscritos" routerLinkActive="active">Estudantes Inscritos</a>
+        </li>
+
+        <li class="nav-item" *ngIf="perfil === 'EMPRESA'">
+          <a class="nav-link" routerLink="/vagas" routerLinkActive="active">Vagas</a>
+        </li>
+
+        <li class="nav-item" *ngIf="perfil === 'ESTUDANTE'">
+          <a class="nav-link" routerLink="/vagas/disponiveis" routerLinkActive="active">Vagas Disponíveis</a>
+        </li>
+
+        <li class="nav-item" *ngIf="perfil === 'ESTUDANTE'">
+          <a class="nav-link" routerLink="/vagas/inscricoes" routerLinkActive="active">Inscrições Feitas</a>
+        </li>
+
+        <li class="nav-item" *ngIf="perfil === 'ESTUDANTE'">
+          <a class="nav-link" routerLink="/estudantes/avaliar" routerLinkActive="active">Avaliar Empresas</a>
+        </li>
+
+      </ul>
+
+      <!-- Área do usuário logado -->
+      <div class="d-flex align-items-center gap-3">
+        <div>
+          <strong>{{ nomeUsuario }}</strong><br />
+          <small>{{ perfil | uppercase }}</small>
+        </div>
+        <button (click)="logout()" class="btn btn-outline-danger btn-sm">Sair</button>
+      </div>
+    </div>
+
+  </div>
+</nav>

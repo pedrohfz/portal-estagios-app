@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <h2>Estudantes Inscritos</h2>
+
+  <div *ngIf="erro" class="alert alert-danger mt-3">
+    {{ mensagem }}
+  </div>
+
+  <div *ngIf="sucesso" class="alert alert-success mt-3">
+    {{ mensagem }}
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Vaga</th>
+        <th>Estudante</th>
+        <th>Data Inscrição</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let inscricao of inscricoes">
+            <td>{{ inscricao.id }}</td>
+            <td>{{ inscricao.tituloVaga }}</td>
+            <td>{{ inscricao.nomeEstudante }}</td>
+            <td>{{ inscricao.dataInscricao }}</td>
+        </tr>
+    </tbody>
+  </table>
+</div>

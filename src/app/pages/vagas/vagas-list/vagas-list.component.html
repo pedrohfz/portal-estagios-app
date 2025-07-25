@@ -1,0 +1,44 @@
+<div class="container mt-4">
+  <h2>Vagas</h2>
+  <a class="btn btn-primary mb-3" routerLink="/vagas/novo">Nova Vaga</a>
+
+  <div *ngIf="erro" class="alert alert-danger mt-3">
+    {{ mensagem }}
+  </div>
+
+  <div *ngIf="sucesso" class="alert alert-success mt-3">
+    {{ mensagem }}
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Situação</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let vaga of vagas">
+            <td>{{ vaga.id }}</td>
+            <td>{{ vaga.titulo }}</td>
+            <td>{{ vaga.situacao }}</td>
+            <td>
+              <a [routerLink]="['/vagas/editar', vaga.id]" class="btn btn-sm btn-warning" [class.disabled]="vaga.situacao === 'ENCERRADA'" [attr.aria-disabled]="vaga.situacao === 'ENCERRADA'">
+                Editar
+              </a>
+
+              <button (click)="encerrar(vaga.id)" class="btn btn-sm btn-primary ms-2" [disabled]="vaga.situacao === 'ENCERRADA'">
+                Encerrar
+              </button>
+
+              <button (click)="deletar(vaga.id)" class="btn btn-sm btn-danger ms-2">
+                Excluir
+              </button>
+              
+            </td>
+        </tr>
+    </tbody>
+  </table>
+</div>
